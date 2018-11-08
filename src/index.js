@@ -1,4 +1,5 @@
 function drawOrGate(startX, startY) {
+  clear();
   let canvas = document.getElementById("canvas");
   let ctx = canvas.getContext("2d");
   ctx.beginPath();
@@ -13,6 +14,7 @@ function drawOrGate(startX, startY) {
 }
 
 function drawAndGate(startX, startY) {
+  clear();
   let canvas = document.getElementById("canvas");
   let ctx = canvas.getContext("2d");
 
@@ -37,8 +39,11 @@ function drawNot() {
 }
 
 function drawXorGate(startX, startY) {
+  clear();
+
   let canvas = document.getElementById("canvas");
   let ctx = canvas.getContext("2d");
+
   ctx.beginPath();
   ctx.moveTo(startX, startY);
   ctx.lineTo(startX + 20, startY);
@@ -48,6 +53,20 @@ function drawXorGate(startX, startY) {
   ctx.arcTo(startX + 20, startY + 25, startX, startY, 50);
   ctx.moveTo(startX - 8, startY + 65);
   ctx.arcTo(startX + 20, startY + 33, startX - 8, startY, 50);
+  ctx.stroke();
+}
+
+function drawBuffer(startX, startY) {
+  clear();
+
+  let canvas = document.getElementById("canvas");
+  let ctx = canvas.getContext("2d");
+
+  ctx.beginPath();
+  ctx.moveTo(startX, startY);
+  ctx.lineTo(startX + 70, startY + 35);
+  ctx.lineTo(startX, startY + 65);
+  ctx.closePath();
   ctx.stroke();
 }
 
@@ -77,6 +96,7 @@ function clear() {
   const clearButton = document.getElementById("clear");
   const andButton = document.getElementById("andGate");
   const notButton = document.getElementById("not");
+  const bufferButton = document.getElementById("buffer");
 
   drawOrGate(startX, startY);
   drawNot();
@@ -92,6 +112,9 @@ function clear() {
   });
   notButton.addEventListener("click", function() {
     drawNot();
+  });
+  bufferButton.addEventListener("click", function() {
+    drawBuffer(startX, startY);
   });
 
   var canvas = document.getElementById("canvas");
